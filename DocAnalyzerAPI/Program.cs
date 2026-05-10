@@ -1,5 +1,6 @@
 
 using DocAnalyzerAPI.Data;
+using DocAnalyzerAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DocAnalyzerAPI
@@ -19,7 +20,8 @@ namespace DocAnalyzerAPI
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlite("Data Source=docanalyzer.db"));
-
+            builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();  
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
