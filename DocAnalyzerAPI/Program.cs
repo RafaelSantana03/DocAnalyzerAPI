@@ -1,4 +1,7 @@
 
+using DocAnalyzerAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace DocAnalyzerAPI
 {
     public class Program
@@ -10,9 +13,12 @@ namespace DocAnalyzerAPI
             // Add services to the container.
 
             builder.Services.AddControllers();
-   
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlite("Data Source=docanalyzer.db"));
 
             var app = builder.Build();
 
