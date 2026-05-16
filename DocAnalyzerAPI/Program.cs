@@ -22,7 +22,7 @@ namespace DocAnalyzerAPI
                     options.UseSqlite("Data Source=docanalyzer.db"));
             builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();  
             builder.Services.AddScoped<IPdfExtractorService, PdfExtractorService>();
-
+            builder.Services.AddScoped<IEmbeddingService, EmbeddingService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
